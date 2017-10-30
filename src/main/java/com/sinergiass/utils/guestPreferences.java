@@ -6,6 +6,8 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean
 @ApplicationScoped
 public class guestPreferences {
+
+
 	private String layout = "teal";
 	private String theme = "teal";
 	private boolean overlayMenu = true;
