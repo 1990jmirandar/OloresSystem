@@ -10,23 +10,25 @@
     <ui:define name="content">
         
     	<h1>Olores</h1>
-    
-    	<p:dataTable value="#{OlorManagedBean.olores}" var="olor">
-    		<p:column>
-    			<f:facet name="header">
-    				<h:outputText value="Nombre"/>
-    			</f:facet>
-    			<h:outputText value="#{olor.name}" />
-    		</p:column>
     	
- 		    <p:column>
-    			<f:facet name="header">
-    				<h:outputText value="Color"/>
-    			</f:facet>
-    			<h:outputText value="#{olor.hexColor}" />
-    		</p:column>
-    	
-    	</p:dataTable>
-        
+    	<h:form>
+	    	<p:dataTable value="#{olorBean.olores}" var="olor" widgetVar="olorTable" emptyMessage="No hay olores registrados" 
+	    					filteredValue="#{olorBean.filteredOlores}">
+	  
+	    		<p:column headerText="Nombre" sortBy="#{olor.name}" filterBy="#{olor.name}">
+	    			<h:outputText value="#{olor.name}" />
+	    		</p:column>
+	    	
+	 		    <p:column headerText="Color (Hexadecimal)">
+	    			<h:outputText value="#{olor.hexColor}" style="background-color:#{olor.hexColor}"/>
+	    		</p:column>
+	    		
+	    		<p:column headerText="Acciones">
+	    			<h:commandButton value="Modificar" />
+	    			<h:commandButton value="Eliminar" />
+	    		</p:column>
+	    	
+	    	</p:dataTable>
+        </h:form>
     </ui:define>
 </ui:composition>

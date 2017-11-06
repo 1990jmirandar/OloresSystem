@@ -13,15 +13,15 @@
     
         <h:form>
         	
-        	Nombre del olor: <h:inputText value="#{olor.name}" />
+        	Nombre del olor: <h:inputText value="#{name}" />
         	
         	<br/><br/>
         	
-        	Color en hexadecimal: <h:inputText value="#{olor.hexColor}" />
+        	Color en hexadecimal: <h:inputText value="#{hexColor}" />
         	
         	<br/><br/>
         	
-        	<h:commandButton action="olores" value="Submit" />
+        	<h:commandButton action="#{olorBean.addOlor(name, hexColor)}" value="Submit" />
         	
         </h:form>
         
