@@ -1,0 +1,29 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+                
+    <ui:define name="title">Ingreso de Olor</ui:define>
+
+    <ui:define name="content">
+        
+    	<h1>Ingreso de Olor</h1>
+    
+        <h:form>
+        	
+        	Nombre del olor: <h:inputText value="#{name}" />
+        	
+        	<br/><br/>
+        	
+        	Color en hexadecimal: <h:inputText value="#{hexColor}" />
+        	
+        	<br/><br/>
+        	
+        	<h:commandButton action="#{olorBean.addOlor(name, hexColor)}" value="Guardar" />
+        	
+        </h:form>
+        
+    </ui:define>
+</ui:composition>

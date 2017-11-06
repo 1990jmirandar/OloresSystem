@@ -2,23 +2,23 @@ package com.sinergiass.model;
 
 public class Olor {
 	
-//	private Integer id;
+	private Integer id;
 	private String name;
 	private String hexColor;
 	
-	public Olor(String name, String hexColor) {
-//		this.id = id;
+	public Olor(Integer id, String name, String hexColor) {
+		this.id = id;
 		this.name = name;
 		this.hexColor = hexColor;
 		
 	}
 	
-//	public Integer getId() {
-//		return id;
-//	}
-//	public void setId(Integer olorId) {
-//		this.id = olorId;
-//	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer olorId) {
+		this.id = olorId;
+	}
 	
 	public String getHexColor() {
 		return hexColor;

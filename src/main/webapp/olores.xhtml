@@ -11,7 +11,15 @@
         
     	<h1>Olores</h1>
     	
+    	<br/>
+    	
+    	
     	<h:form>
+
+    		<h:commandButton action="ingresar_olor" value="Nuevo Olor" />
+    	
+    		<br/><br/>
+    	
 	    	<p:dataTable value="#{olorBean.olores}" var="olor" widgetVar="olorTable" emptyMessage="No hay olores registrados" 
 	    					filteredValue="#{olorBean.filteredOlores}">
 	  
@@ -24,8 +32,8 @@
 	    		</p:column>
 	    		
 	    		<p:column headerText="Acciones">
-	    			<h:commandButton value="Modificar" />
-	    			<h:commandButton value="Eliminar" />
+	    			<h:commandButton value="Modificar" action="#{olorBean.loadOlor(olor.id)}" />
+	    			<h:commandButton value="Eliminar" action="#{olorBean.removeOlor(olor.id)}" />
 	    		</p:column>
 	    	
 	    	</p:dataTable>

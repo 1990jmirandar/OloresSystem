@@ -5,23 +5,25 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/WEB-INF/template.xhtml">
                 
-    <ui:define name="title">Ingreso de Olor</ui:define>
+    <ui:define name="title">Modificar Olor</ui:define>
 
     <ui:define name="content">
         
-    	<h1>Ingreso de Olor</h1>
+    	<h1>Modificar Olor</h1>
     
         <h:form>
         	
-        	Nombre del olor: <h:inputText value="#{name}" />
+        	Nombre del olor: <h:inputText value="#{olor.name}" id="name"/>
         	
         	<br/><br/>
         	
-        	Color en hexadecimal: <h:inputText value="#{hexColor}" />
+        	Color en hexadecimal: <h:inputText value="#{olor.hexColor}" id="hexColor" />
+        	
+        	<h:inputHidden value="#{olor.id}" />
         	
         	<br/><br/>
         	
-        	<h:commandButton action="#{olorBean.addOlor(name, hexColor)}" value="Submit" />
+        	<h:commandButton action="#{olorBean.updateOlor(olor)}" value="Guardar" />
         	
         </h:form>
         
