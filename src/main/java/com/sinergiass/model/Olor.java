@@ -1,6 +1,6 @@
 package com.sinergiass.model;
 
-public class Olor {
+public class Olor implements Cloneable {
 	
 	private Integer id;
 	private String name;
@@ -11,6 +11,9 @@ public class Olor {
 		this.name = name;
 		this.hexColor = hexColor;
 		
+	}
+	
+	public Olor() {
 	}
 	
 	public Integer getId() {
@@ -32,5 +35,12 @@ public class Olor {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	@Override
+	public Olor clone() throws CloneNotSupportedException {
+		// TODO Auto-generated method stub
+		return (Olor) super.clone();
+	}
+	
 	
 }

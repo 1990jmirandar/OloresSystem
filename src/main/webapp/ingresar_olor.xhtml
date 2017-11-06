@@ -9,21 +9,27 @@
 
     <ui:define name="content">
         
-    	<h1>Ingreso de Olor</h1>
-    
-        <h:form>
-        	
-        	Nombre del olor: <h:inputText value="#{name}" />
-        	
-        	<br/><br/>
-        	
-        	Color en hexadecimal: <h:inputText value="#{hexColor}" />
-        	
-        	<br/><br/>
-        	
-        	<h:commandButton action="#{olorBean.addOlor(name, hexColor)}" value="Guardar" />
-        	
-        </h:form>
-        
+        <div class="ui-g">
+            <div class="ui-g-12">
+                <div class="card">
+			    	<h1>Ingreso de Olor</h1>
+			    
+			        <h:form>
+			        	
+			        	Nombre del olor: <h:inputText value="#{name}" />
+			        	
+			        	<br/><br/>
+			        	
+			        	Color en hexadecimal: <h:inputText value="#{hexColor}" />
+			        	
+			        	<br/><br/>
+			        	
+			        	<h:commandButton action="#{olorBean.addOlor(name, hexColor)}" value="Guardar" />
+			        	
+			        </h:form>
+				</div>
+			</div>
+		</div>        
+		
     </ui:define>
 </ui:composition>

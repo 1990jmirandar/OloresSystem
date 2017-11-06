@@ -19,6 +19,7 @@ public class OlorBean {
 	
 	private Map<Integer, Olor> olores = new HashMap<>();
 	private List<Olor> filteredOlores;
+	private Olor olor;
 	
 	private Integer nextId = 0;
 	
@@ -29,14 +30,11 @@ public class OlorBean {
 	// Temporal
 	@PostConstruct
 	public void generarOlores() {
+		olor = new Olor();
 		
-		Olor keroseno = new Olor(0, "Keroseno", "#9be7ff");
-		Olor gasolina = new Olor(1, "Gasolina", "#ffffce");
-		Olor petroleo = new Olor(2, "Petróleo", "#ef9a9a");
-		
-//		olores[nextId++] = keroseno;
-//		olores[nextId++] = gasolina;
-//		olores[nextId++] = petroleo;
+		Olor keroseno = new Olor(0, "Keroseno", "9be7ff");
+		Olor gasolina = new Olor(1, "Gasolina", "ffffce");
+		Olor petroleo = new Olor(2, "Petróleo", "ef9a9a");
 		
 		olores.put(nextId++, keroseno);
 		olores.put(nextId++, gasolina);
@@ -68,22 +66,34 @@ public class OlorBean {
 		return "update_olor_form";
 	}
 	
-	public String addOlor(String nombre, String hexColor) {
-		Olor olor = new Olor(nextId++, nombre, hexColor);
+	public void addOlor() {
+		olor.setId(nextId);
 		olores.put(olor.getId(), olor);
 		
-		return "olores";
+		olor = new Olor();
+		
 	}
 	
-	public String removeOlor(int id) {
+	public void removeOlor(int id) {
 		olores.remove(id);
 		
-		return "olores";
 	}
 	
-	public String updateOlor(Olor olor) {
-		olores.put(olor.getId(), olor);
-		
-		return "olores";
+	public void updateOlor(Olor olor) {
+		try {
+			this.olor = olor.clone();
+		} catch (CloneNotSupportedException e) {
+			e.printStackTrace();
+		}
 	}
+
+	public Olor getOlor() {
+		return olor;
+	}
+
+	public void setOlor(Olor olor) {
+		this.olor = olor;
+	}
+	
+	
 }
