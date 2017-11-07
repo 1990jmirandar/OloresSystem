@@ -22,12 +22,12 @@
 
 						<p:panelGrid columns="1" layout="grid" id="pngNuevoOlor">
 							<h:outputText value="Nombre:" />
-							<h:inputText value="#{olorBean.olor.name}" />
+							<h:inputText value="#{tipoOlorBean.olor.name}" />
 
 							<h:outputText value="Color:" />
-							<p:colorPicker value="#{olorBean.olor.hexColor}" />
+							<p:colorPicker value="#{tipoOlorBean.olor.hexColor}" />
 
-							<p:commandButton action="#{olorBean.addOlor()}" value="Guardar"
+							<p:commandButton action="#{tipoOlorBean.addOlor()}" value="Guardar"
 								update=":frmPrincipal" />
 						</p:panelGrid>
 
@@ -38,9 +38,9 @@
 
 						<h3>Lista de Olores Registrados</h3>
 
-						<p:dataTable value="#{olorBean.olores}" var="olor"
+						<p:dataTable value="#{tipoOlorBean.olores}" var="olor"
 							widgetVar="olorTable" emptyMessage="No hay olores registrados"
-							filteredValue="#{olorBean.filteredOlores}">
+							filteredValue="#{tipoOlorBean.filteredOlores}">
 
 							<p:column headerText="Nombre" sortBy="#{olor.name}"
 								filterBy="#{olor.name}">
@@ -48,14 +48,16 @@
 							</p:column>
 
 							<p:column headerText="Color (Hexadecimal)">
-								<h:outputText value="#{olor.hexColor}" style="background-color:\##{olor.hexColor}"/>
+								<h:outputText value="#{olor.hexColor}"
+									style="background-color:\##{olor.hexColor}" />
 							</p:column>
 
 							<p:column headerText="Acciones">
 								<p:commandButton value="Modificar"
-									actionListener="#{olorBean.updateOlor(olor)}" update=":frmPrincipal:pngNuevoOlor" />
+									actionListener="#{tipoOlorBean.updateOlor(olor)}"
+									update=":frmPrincipal:pngNuevoOlor" />
 								<p:commandButton value="Eliminar"
-									action="#{olorBean.removeOlor(olor.id)}" />
+									action="#{tipoOlorBean.removeOlor(olor.id)}" />
 							</p:column>
 
 						</p:dataTable>
