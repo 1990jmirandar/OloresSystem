@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table(name="TIPOOLOR")
 public class TipoOlor implements Cloneable {
 	
 	@Id
@@ -59,6 +59,5 @@ public class TipoOlor implements Cloneable {
 		// TODO Auto-generated method stub
 		return super.toString();
 	}
-	
 	
 }
