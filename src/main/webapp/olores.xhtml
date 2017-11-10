@@ -27,8 +27,8 @@
 							<h:outputText value="Color:" />
 							<p:colorPicker value="#{tipoOlorBean.olor.hexColor}" />
 
-							<p:commandButton action="#{tipoOlorBean.addOlor()}" value="Guardar"
-								update=":frmPrincipal" />
+							<p:commandButton action="#{tipoOlorBean.insertarOlor()}"
+								value="Guardar" update=":frmPrincipal" />
 						</p:panelGrid>
 
 
@@ -38,7 +38,7 @@
 
 						<h3>Lista de Olores Registrados</h3>
 
-						<p:dataTable value="#{tipoOlorBean.olores}" var="olor"
+						<p:dataTable value="#{tipoOlorBean.getOlores()}" var="olor"
 							widgetVar="olorTable" emptyMessage="No hay olores registrados"
 							filteredValue="#{tipoOlorBean.filteredOlores}">
 
@@ -54,10 +54,9 @@
 
 							<p:column headerText="Acciones">
 								<p:commandButton value="Modificar"
-									actionListener="#{tipoOlorBean.updateOlor(olor)}"
-									update=":frmPrincipal:pngNuevoOlor" />
+									action="#{tipoOlorBean.toUpdateForm(olor)}"/>
 								<p:commandButton value="Eliminar"
-									action="#{tipoOlorBean.removeOlor(olor.id)}" />
+									actionListener="#{tipoOlorBean.removeOlor(olor)}" update=" :frmPrincipal" />
 							</p:column>
 
 						</p:dataTable>

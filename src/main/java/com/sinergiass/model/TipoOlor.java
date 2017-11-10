@@ -11,7 +11,7 @@ import javax.persistence.Table;
 public class TipoOlor implements Cloneable {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	
 	private int id;
 	
@@ -28,25 +28,17 @@ public class TipoOlor implements Cloneable {
 	public TipoOlor() {
 	}
 	
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer olorId) {
-		this.id = olorId;
-	}
+	public Integer getId() { return id;	}
 	
-	public String getHexColor() {
-		return hexColor;
-	}
-	public void setHexColor(String hexColor) {
-		this.hexColor = hexColor;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
+	public void setId(Integer id) {	this.id = id; }
+	
+	public String getHexColor() { return hexColor; }
+	
+	public void setHexColor(String hexColor) { this.hexColor = hexColor; }
+	
+	public String getName() { return name; }
+	
+	public void setName(String name) { this.name = name; }
 	
 	@Override
 	public TipoOlor clone() throws CloneNotSupportedException {

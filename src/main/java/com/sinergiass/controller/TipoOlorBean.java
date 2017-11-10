@@ -11,6 +11,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
+import com.sinergiass.dao.TipoOlorDao;
 import com.sinergiass.model.TipoOlor;
 
 @ManagedBean
@@ -21,7 +22,6 @@ public class TipoOlorBean {
 	private List<TipoOlor> filteredOlores;
 	private TipoOlor olor;
 	
-	private Integer nextId = 0;
 	
 	public TipoOlorBean(){
 		
@@ -31,14 +31,6 @@ public class TipoOlorBean {
 	@PostConstruct
 	public void generarOlores() {
 		olor = new TipoOlor();
-		
-		TipoOlor keroseno = new TipoOlor(0, "Keroseno", "9be7ff");
-		TipoOlor gasolina = new TipoOlor(1, "Gasolina", "ffffce");
-		TipoOlor petroleo = new TipoOlor(2, "Petróleo", "ef9a9a");
-		
-		olores.put(nextId++, keroseno);
-		olores.put(nextId++, gasolina);
-		olores.put(nextId++, petroleo);
 	}
 
 	public List<TipoOlor> getFilteredOlores() {
@@ -46,7 +38,16 @@ public class TipoOlorBean {
 	}
 
 	public List<TipoOlor> getOlores() {
-		return new ArrayList<TipoOlor>(olores.values());
+		TipoOlorDao dao = new TipoOlorDao();
+		
+		try {
+			 return dao.consultar();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return null;
 	}
 	
 	public void setFilteredOlores(List<TipoOlor> filteredOlores) {
@@ -66,25 +67,42 @@ public class TipoOlorBean {
 		return "update_olor_form";
 	}
 	
-	public void addOlor() {
-		olor.setId(nextId);
-		olores.put(olor.getId(), olor);
+	public void insertarOlor() {
+		TipoOlorDao dao = new TipoOlorDao();
 		
-		olor = new TipoOlor();
-		
-	}
-	
-	public void removeOlor(int id) {
-		olores.remove(id);
-		
-	}
-	
-	public void updateOlor(TipoOlor olor) {
 		try {
-			this.olor = olor.clone();
-		} catch (CloneNotSupportedException e) {
+			dao.insertar(olor);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+	}
+	
+	public void removeOlor(TipoOlor olor) {
+		this.olor = olor;
+		TipoOlorDao dao = new TipoOlorDao();
+		
+		try {
+			dao.eliminar(olor);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public String updateOlor() {
+		TipoOlorDao dao = new TipoOlorDao();
+		
+		try {
+			dao.actualizar(this.olor);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return "olores";
 	}
 
 	public TipoOlor getOlor() {
@@ -95,5 +113,9 @@ public class TipoOlorBean {
 		this.olor = olor;
 	}
 	
+	public String toUpdateForm(TipoOlor olor) {
+		this.olor = olor;
+		return "update_olor_form";
+	}
 	
 }
