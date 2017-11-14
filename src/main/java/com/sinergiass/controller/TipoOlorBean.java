@@ -1,6 +1,5 @@
 package com.sinergiass.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +23,7 @@ public class TipoOlorBean {
 	
 	
 	public TipoOlorBean(){
-		
+		olor = new TipoOlor();
 	}
 	
 	// Temporal

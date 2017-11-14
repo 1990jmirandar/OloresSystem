@@ -7,25 +7,24 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="TIPOOLOR")
-public class TipoOlor implements Cloneable {
-	
+@Table(name="NIVELOLOR")
+public class NivelOlor {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
 	private int id;
 	
 	private String name;
 	private String hexColor;
 	
-	public TipoOlor(Integer id, String name, String hexColor) {
+	public NivelOlor(Integer id, String name, String hexColor) {
 		this.id = id;
 		this.name = name;
 		this.hexColor = hexColor;
 		
 	}
 	
-	public TipoOlor() {
+	public NivelOlor() {
 	}
 	
 	public Integer getId() { return id;	}
@@ -44,5 +43,4 @@ public class TipoOlor implements Cloneable {
 	public TipoOlor clone() throws CloneNotSupportedException {
 		return (TipoOlor) super.clone();
 	}
-	
 }
