@@ -53,7 +53,6 @@ public class NivelOlorBean {
 		this.filteredNiveles = filteredNiveles;
 	}
 	
-	// Methods
 	
 	public String loadNivel(int id) {
 		NivelOlor nivel = niveles.get(id);
@@ -66,7 +65,7 @@ public class NivelOlorBean {
 		return "update_nivel_form";
 	}
 	
-	public void insertarOlor() {
+	public void insertarNivel() {
 		NivelOlorDao dao = new NivelOlorDao();
 		
 		try {
@@ -78,7 +77,7 @@ public class NivelOlorBean {
 		
 	}
 	
-	public void removeOlor(NivelOlor nivel) {
+	public void removeNivel(NivelOlor nivel) {
 		this.nivel = nivel;
 		NivelOlorDao dao = new NivelOlorDao();
 		
@@ -91,7 +90,7 @@ public class NivelOlorBean {
 		
 	}
 	
-	public String updateOlor() {
+	public String updateNivel() {
 		NivelOlorDao dao = new NivelOlorDao();
 		
 		try {
@@ -101,7 +100,7 @@ public class NivelOlorBean {
 			e.printStackTrace();
 		}
 		
-		return "Niveles";
+		return "niveles";
 	}
 
 	public NivelOlor getNivel() {
@@ -114,6 +113,6 @@ public class NivelOlorBean {
 	
 	public String toUpdateForm(NivelOlor nivel) {
 		this.nivel = nivel;
-		return "update_olor_form";
+		return "update_nivel_form";
 	}
 }

@@ -8,6 +8,7 @@
 
 		<class>com.sinergiass.model.TipoOlor</class>
 		<class>com.sinergiass.model.PuntoMonitoreo</class>
+		<class>com.sinergiass.model.NivelOlor</class>
 		
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/OloresDB" />

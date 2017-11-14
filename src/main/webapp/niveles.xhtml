@@ -4,7 +4,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
 
-	<ui:define name="title">Olores</ui:define>
+	<ui:define name="title">Niveles de Olores</ui:define>
 
 	<ui:define name="content">
 
@@ -18,42 +18,42 @@
 
 					<h:form id="frmPrincipal">
 
-						<h3>Nuevo Olor</h3>
+						<h3>Nuevo Nivel de Olor</h3>
 
 						<p:panelGrid columns="1" layout="grid" id="pngNuevoOlor">
 							<h:outputText value="Nombre:" />
-							<h:inputText value="#{tipoOlorBean.olor.name}" />
+							<h:inputText value="#{nivelOlorBean.nivel.name}" />
 
 							<h:outputText value="Color:" />
-							<p:colorPicker value="#{tipoOlorBean.olor.hexColor}" />
+							<p:colorPicker value="#{nivelOlorBean.nivel.hexColor}" />
 
-							<p:commandButton action="#{tipoOlorBean.insertarOlor()}"
+							<p:commandButton action="#{nivelOlorBean.insertarNivel()}"
 								value="Guardar" update=":frmPrincipal" />
 						</p:panelGrid>
 
 						<br />
 
-						<h3>Lista de Olores Registrados</h3>
+						<h3>Lista de Niveles Registrados</h3>
 
-						<p:dataTable value="#{tipoOlorBean.getOlores()}" var="olor"
-							widgetVar="olorTable" emptyMessage="No hay olores registrados"
-							filteredValue="#{tipoOlorBean.filteredOlores}">
+						<p:dataTable value="#{nivelOlorBean.getNiveles()}" var="nivel"
+							widgetVar="nivelTable" emptyMessage="No hay niveles registrados"
+							filteredValue="#{nivelOlorBean.filteredNiveles}">
 
-							<p:column headerText="Nombre" sortBy="#{olor.name}"
-								filterBy="#{olor.name}">
-								<h:outputText value="#{olor.name}" />
+							<p:column headerText="Nombre del Nivel" sortBy="#{nivel.name}"
+								filterBy="#{nivel.name}">
+								<h:outputText value="#{nivel.name}" />
 							</p:column>
 
 							<p:column headerText="Color (Hexadecimal)">
-								<h:outputText value="#{olor.hexColor}"
-									style="background-color:\##{olor.hexColor}" />
+								<h:outputText value="#{nivel.hexColor}"
+									style="background-color:\##{nivel.hexColor}" />
 							</p:column>
 
 							<p:column headerText="Acciones">
 								<p:commandButton value="Modificar"
-									action="#{tipoOlorBean.toUpdateForm(olor)}"/>
+									action="#{nivelOlorBean.toUpdateForm(nivel)}"/>
 								<p:commandButton value="Eliminar"
-									actionListener="#{tipoOlorBean.removeOlor(olor)}" update=" :frmPrincipal" />
+									actionListener="#{nivelOlorBean.removeNivel(nivel)}" update=" :frmPrincipal" />
 							</p:column>
 
 						</p:dataTable>
