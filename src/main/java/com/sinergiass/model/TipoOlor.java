@@ -28,6 +28,8 @@ public class TipoOlor implements Cloneable {
 	public TipoOlor() {
 	}
 
+	// getters & setters
+	
 	public Integer getId() {
 		return id;
 	}
@@ -52,6 +54,8 @@ public class TipoOlor implements Cloneable {
 		this.name = name;
 	}
 
+	// FIN: getters & setters
+	
 	@Override
 	public TipoOlor clone() throws CloneNotSupportedException {
 		return (TipoOlor) super.clone();

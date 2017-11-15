@@ -1,6 +1,6 @@
 package com.sinergiass.controller;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -17,7 +17,7 @@ import com.sinergiass.model.TipoOlor;
 @ApplicationScoped
 public class TipoOlorBean {
 	
-	private Map<Integer, TipoOlor> olores = new HashMap<>();
+	private List<TipoOlor> olores;
 	private List<TipoOlor> filteredOlores;
 	private TipoOlor olor;
 	
@@ -26,16 +26,27 @@ public class TipoOlorBean {
 		olor = new TipoOlor();
 	}
 	
-	// Temporal
-	@PostConstruct
-	public void generarOlores() {
-		olor = new TipoOlor();
-	}
-
+	// getters & setters
+	
 	public List<TipoOlor> getFilteredOlores() {
 		return filteredOlores;
 	}
 
+	public void setFilteredOlores(List<TipoOlor> filteredOlores) {
+		this.filteredOlores = filteredOlores;
+	}
+	
+	
+	public TipoOlor getOlor() {
+		return olor;
+	}
+
+	public void setOlor(TipoOlor olor) {
+		this.olor = olor;
+	}
+	
+	
+	// TODO: Cargar los olores de la base una sola vez al crear el bean.
 	public List<TipoOlor> getOlores() {
 		TipoOlorDao dao = new TipoOlorDao();
 		
@@ -49,22 +60,20 @@ public class TipoOlorBean {
 		return null;
 	}
 	
-	public void setFilteredOlores(List<TipoOlor> filteredOlores) {
-		this.filteredOlores = filteredOlores;
-	}
+	// FIN: getters & setters
 	
-	// Methods
+	// Métodos CRUD
 	
-	public String loadOlor(int id) {
-		TipoOlor olor = olores.get(id);
-		
-		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-		
-		Map<String, Object> requestMap = externalContext.getRequestMap();
-		requestMap.put("olor", olor);
-		
-		return "update_olor_form";
-	}
+//	public String loadOlor(int id) {
+//		TipoOlor olor = olores.get(id);
+//		
+//		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+//		
+//		Map<String, Object> requestMap = externalContext.getRequestMap();
+//		requestMap.put("olor", olor);
+//		
+//		return "update_olor_form";
+//	}
 	
 	public void insertarOlor() {
 		TipoOlorDao dao = new TipoOlorDao();
@@ -104,14 +113,6 @@ public class TipoOlorBean {
 		return "olores";
 	}
 
-	public TipoOlor getOlor() {
-		return olor;
-	}
-
-	public void setOlor(TipoOlor olor) {
-		this.olor = olor;
-	}
-	
 	public String toUpdateForm(TipoOlor olor) {
 		this.olor = olor;
 		return "update_olor_form";

@@ -16,13 +16,13 @@ public class PuntoMonitoreo {
 	private int id;
 
 	private String name;
-	private String latitud;
-	private String longitud;
+	private float latitud;			// Latitud va primero cuando se muestra
+	private float longitud;
 
 	public PuntoMonitoreo() {
 	}
 
-	public PuntoMonitoreo(int id, String name, String latitud, String longitud) {
+	public PuntoMonitoreo(int id, String name, float latitud, float longitud) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -46,19 +46,19 @@ public class PuntoMonitoreo {
 		this.name = name;
 	}
 
-	public String getLatitud() {
+	public float getLatitud() {
 		return latitud;
 	}
 
-	public void setLatitud(String latitud) {
+	public void setLatitud(float latitud) {
 		this.latitud = latitud;
 	}
 
-	public String getLongitud() {
+	public float getLongitud() {
 		return longitud;
 	}
 
-	public void setLongitud(String longitud) {
+	public void setLongitud(float longitud) {
 		this.longitud = longitud;
 	}
 
